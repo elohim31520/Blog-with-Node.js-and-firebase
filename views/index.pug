@@ -1,0 +1,76 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title 部落格 | Bootstrap 4 繁體中文手冊
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    // 圖片來源：http://www.gratisography.com/#objects
+    style.
+      .breadcrumb {
+      background-color: transparent;
+      }
+      /* typography design */
+      .text-primary {
+      color: #00cc99 !important;
+      }
+      .post {
+      line-height: 1.8;
+      }
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark(style='background-color: #00cc99;')
+      a.navbar-brand(href='/')
+        i.fa.fa-diamond(aria-hidden='true')
+        |      部落格
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav.ml-auto
+          a.nav-item.nav-link(href='#')
+            | 心得 
+            span.sr-only (current)
+    .container
+      .row.my-4.justify-content-center
+        .col-md-9
+          .card.mb-3
+            .card-body
+              a(href='/post.html')
+                h2.text-primary 補充課程：Sass 與 includePaths
+              .d-flex.flex-row.text-secondary.small
+                .p-2
+                  span.fa.fa-clock-o
+                  |  2018/01/04
+                .p-2
+                  i.fa.fa-tag(aria-hidden='true')
+                  a.text-info(href='#')
+                    | 沒有分類
+              div
+                | [程式][PHP] HTML 表單(Form)以陣列(Array)方式傳遞<input type='text'>資訊。 什麼時候會用到這樣的方法，我無法明確表達，可能要靠你自己想像。 我遇到的狀況是要讓user不斷的新增商品與價格。 第一種做法： .....
+      nav.my-5(aria-label='Page navigation example')
+        ul.pagination.justify-content-center
+          li.page-item.disabled
+            a.page-link(href='/?page=0', tabindex='-1') Previous
+          li.page-item.active
+            a.page-link(href='/?page=1')
+              | 1
+          li.page-item
+            a.page-link(href='/?page=2')
+              | 2
+          li.page-item
+            a.page-link(href='/?page=2') Next
+    footer.bg-light.text-muted.py-5
+      .container
+        ul.list-unstyled.d-flex.justify-content-between
+          li © Copright 2017 
+          li.ml-auto
+            a.text-info.mr-1(href='#')
+              i.fa.fa-instagram(aria-hidden='true')
+            a.text-info.mr-1(href='#')
+              i.fa.fa-facebook-square(aria-hidden='true')
+            a.text-info(href='')
+              i.fa.fa-twitter(aria-hidden='true')
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')

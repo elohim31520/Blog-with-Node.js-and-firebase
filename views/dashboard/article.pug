@@ -1,0 +1,73 @@
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title 商務控制後台
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    style.
+      html {
+      font-size: 14px;
+      }
+      .main {
+      min-height: calc(100vh - (49px + 49px + 42px + 18px))
+      }
+    // JavaScript
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    script(src='https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js')
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand(href='/dashboard/') Blog 控制台
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav
+          a.nav-item.nav-link.active(href='archives.html')
+            | 文章管理
+          a.nav-item.nav-link(href='categories.html') 分類管理 
+      a.nav-link(href='#') 登出
+    .main.container-fluid.my-4
+      form.row.justify-content-center(method='POST')
+        .col-md-6
+          label(for='title') 請輸入標題
+          input#title.form-control(type='text', name='title', placeholder='標題', value='')
+          hr
+          textarea#editor.form-control(name='content')
+          script.
+            CKEDITOR.replace( 'content' );
+        .col-md-3
+          .card.mb-3
+            h6.card-header 分類
+            .card-body
+              .form-check
+                label.form-check-label
+                  input.form-check-input(type='radio', name='category', required='', value='-L2TajOWL1ycB_hwyiK-')
+                  |               心得
+              .form-check
+                label.form-check-label
+                  input.form-check-input(type='radio', name='category', required='', value='-L2VDz-ovFCKMA34kfdY')
+                  |               課程
+              .form-check
+                label.form-check-label
+                  input.form-check-input(type='radio', name='category', required='', value='-L3VkF87JcRmUUjxhi0g')
+                  |               新聞
+          .card.mb-3
+            h6.card-header 是否公開
+            .card-body
+              .btn-group.btn-group-toggle.w-100(data-toggle='buttons')
+                label.btn.btn-outline-primary.w-100
+                  input(type='radio', name='status', autocomplete='off', value='draft')
+                  |  草稿
+                label.btn.btn-outline-primary.w-100
+                  input(type='radio', name='status', autocomplete='off', value='public')
+                  |  公開
+          .btn-group.w-100
+            button.btn.btn-outline-primary.w-100(type='submit') 儲存
+    footer.mt-5.py-3.bg-light.text-secondary.text-center
+      | 六角學院後台管理系統
+

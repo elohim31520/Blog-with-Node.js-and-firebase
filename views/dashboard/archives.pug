@@ -1,0 +1,68 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title 商務控制後台
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    style.
+      html {
+      font-size: 14px;
+      }
+      .main {
+      min-height: calc(100vh - (49px + 49px + 42px + 18px))
+      }
+    // JavaScript
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    script(src='https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js')
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand(href='/dashboard/') Blog 控制台
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav
+          a.nav-item.nav-link.active(href='archives.html') 文章管理 
+          a.nav-item.nav-link(href='categories.html') 分類管理 
+      a.nav-link(href='#') 登出
+    .main.container-fluid.my-4
+      .row.justify-content-center
+        .col-md-6
+          .btn-group.w-100
+            a.btn.btn-outline-secondary.w-100.rounded-0.active(href='#') 已發佈
+            a.btn.btn-outline-secondary.w-100.rounded-0(href='#') 草稿
+            a.btn.btn-primary(href='article.html') 新增文章
+          .card.my-3
+            h4.card-header
+              | 補充課程：Sass 與 includePaths
+            .card-body
+              | [程式][PHP] HTML 表單(Form)以陣列(Array)方式傳遞<input type='text'>資訊。 什麼時候會用到這樣的方法，我無法明確表達，可能要靠你自己想像。 我遇到的狀況是要讓user不斷的新增商品與價格。 第一種做法： .....
+              div
+                span.fa.fa-clock-o
+                |             2018/01/04
+                |             ,
+                span.fa.fa-folder-open-o
+                span
+                  | 沒有分類
+            .card-footer.p-0.btn-group
+              a.btn.btn-outline-danger.rounded-0.deletePost(href='#', data-id='-L1zrsyiWCAbMQ5x8Plk', data-title='補充課程：Sass 與 includePaths') 刪除
+              a.btn.btn-outline-secondary.w-100.rounded-0(href='#') 編輯
+              a.btn.btn-outline-secondary.w-100.rounded-0(href='#', target='_blank') 預覽
+      nav.my-5(aria-label='Page navigation example')
+        ul.pagination.justify-content-center
+          li.page-item.disabled
+            a.page-link(href='/dashboard/archives', tabindex='-1') Previous
+          li.page-item.active
+            a.page-link(href='/dashboard/archives')
+              | 1
+          li.page-item
+            a.page-link(href='/dashboard/archives')
+              | 2
+          li.page-item
+            a.page-link(href='/dashboard/archives') Next
+    footer.mt-5.py-3.bg-light.text-secondary.text-center
+      | 六角學院後台管理系統
