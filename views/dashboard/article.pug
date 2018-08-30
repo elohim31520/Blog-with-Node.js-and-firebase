@@ -10,11 +10,15 @@ html(lang='en')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
     style.
       html {
-      font-size: 14px;
+      font-size: 16px;
       }
       .main {
-      min-height: calc(100vh - (49px + 49px + 42px + 18px))
+        min-height: calc(100vh - (49px + 49px + 42px + 18px))
       }
+      input.form-check-input{
+        margin-left: 1rem
+      }
+
     // JavaScript
     script(src='https://code.jquery.com/jquery-3.2.1.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
@@ -32,40 +36,66 @@ html(lang='en')
           a.nav-item.nav-link(href='categories.html') 分類管理 
       a.nav-link(href='#') 登出
     .main.container-fluid.my-4
-      form.row.justify-content-center(method='POST')
+      if hasInfo
+        h3.alert.alert-warning= info 
+      form.row.justify-content-center(action='/dashboard/article/create',method='POST')
         .col-md-6
           label(for='title') 請輸入標題
-          input#title.form-control(type='text', name='title', placeholder='標題', value='')
+          if article
+            input#title.form-control(type='text', name='title', placeholder='標題', value= article.title)
+          else
+            input#title.form-control(type='text', name='title', placeholder='標題', value='')
           hr
-          textarea#editor.form-control(name='content')
+          if article
+            textarea#editor.form-control(name='content')= article.content
+          else
+            textarea#editor.form-control(name='content')
           script.
             CKEDITOR.replace( 'content' );
         .col-md-3
           .card.mb-3
             h6.card-header 分類
             .card-body
-              .form-check
-                label.form-check-label
-                  input.form-check-input(type='radio', name='category', required='', value='-L2TajOWL1ycB_hwyiK-')
-                  |               心得
-              .form-check
-                label.form-check-label
-                  input.form-check-input(type='radio', name='category', required='', value='-L2VDz-ovFCKMA34kfdY')
-                  |               課程
-              .form-check
-                label.form-check-label
-                  input.form-check-input(type='radio', name='category', required='', value='-L3VkF87JcRmUUjxhi0g')
-                  |               新聞
+            if catalogObj
+              for catalog,key in catalogObj
+                .form-check
+                  if article && article.category === key
+                    label(for=catalog.name)= catalog.name
+                    input.form-check-input(type='radio', name='category', required='', value=key,checked)
+                  else
+                    label(for=catalog.name)= catalog.name
+                    input.form-check-input(type='radio', name='category', required='', value=key)
           .card.mb-3
             h6.card-header 是否公開
-            .card-body
-              .btn-group.btn-group-toggle.w-100(data-toggle='buttons')
-                label.btn.btn-outline-primary.w-100
-                  input(type='radio', name='status', autocomplete='off', value='draft')
-                  |  草稿
-                label.btn.btn-outline-primary.w-100
-                  input(type='radio', name='status', autocomplete='off', value='public')
-                  |  公開
+            if article && article.status === 'draft'
+              .card-body
+                .btn-group.btn-group-toggle.w-100(data-toggle='buttons')
+                  label.btn.btn-outline-primary.w-100.active
+                    input(type='radio', name='status', autocomplete='off', value='draft',checked)
+                    |  草稿
+                  label.btn.btn-outline-primary.w-100
+                    input(type='radio', name='status', autocomplete='off', value='public')
+                    |  公開
+            else if article && article.status === 'public'
+              .card-body
+                .btn-group.btn-group-toggle.w-100(data-toggle='buttons')
+                  label.btn.btn-outline-primary.w-100
+                    input(type='radio', name='status', autocomplete='off', value='draft')
+                    |  草稿
+                  label.btn.btn-outline-primary.w-100.active
+                    input(type='radio', name='status', autocomplete='off', value='public',checked)
+                    |  公開
+
+            else
+              .card-body
+                .btn-group.btn-group-toggle.w-100(data-toggle='buttons')
+                  label.btn.btn-outline-primary.w-100
+                    input(type='radio', name='status', autocomplete='off', value='draft')
+                    |  草稿
+                  label.btn.btn-outline-primary.w-100
+                    input(type='radio', name='status', autocomplete='off', value='public')
+                    |  公開
+
           .btn-group.w-100
             button.btn.btn-outline-primary.w-100(type='submit') 儲存
     footer.mt-5.py-3.bg-light.text-secondary.text-center
